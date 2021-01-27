@@ -1,8 +1,7 @@
 name: text_shadow
 description: this the simple way to create shadow text, neon , stroke , or blur just import the package and let it flow like shadow
 version: 0.0.1
-author:
-homepage:
+homepage: https://github.com/malikkurosaki/text_shadow
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
