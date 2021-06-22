@@ -4,8 +4,8 @@ library text_shadow;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-
-/// for align of shadow
+/// for alignment of shadow
+/// [CENTER] will create the neon like effect
 enum ShadowAlign {
   TOP_LEFT,
   TOP_CENTER,
@@ -18,7 +18,7 @@ enum ShadowAlign {
   CENTER
 }
 
-/// blur size
+/// blur size (default value = [MEDIUM])
 enum BlurSize {
   EXTRA_SMALL,
   SMALL,
@@ -27,9 +27,14 @@ enum BlurSize {
   EXTRA_LARGE
 }
 
-/// font size
-/// 
-/// 64,32,24,18,16,14
+/// font size (default value = [H6])
+/// NAME  SIZE
+/// H1    64.0
+/// H2    32.0
+/// H3    24.0
+/// H4    18.0
+/// H5    16.0
+/// H6    14.0
 enum FontSize {
   H1,
   H2,
@@ -39,12 +44,15 @@ enum FontSize {
   H6
 }
 
-/// extention on text
-/// 
-/// yes ! just extention to make simple
+/// extension on text to give the shadow to the text
+/// yes! just an extension to make simple
+/// textColor is the color of the text
+/// shadowColor is the color of the shadow of the text
+/// align is an enum ShadowAlign for the alignment of the shadow
+/// blurSize is the blurRadius of the shadow
+/// fontSize is the fontSize of the text
 extension Bayangan on Text{
-
-  /// exten on text widget
+  /// extension on text widget
   Text shadow({
     Color textColor,
     Color shadowColor,
@@ -77,7 +85,7 @@ extension Bayangan on Text{
         break;
       }
     }
-    
+
     /// default blur size is 3.0
     double blur = 3.0;
     if(blurZize?.index != null){
@@ -100,9 +108,8 @@ extension Bayangan on Text{
       }
     }
 
-    /// align of shdow
-    /// 
-    /// center to create neon like
+    /// alignment of shadow
+    /// to give a neon like effect, align the shadow to the center
     Offset arah = Offset(blur, blur);
     if(align?.index != null){
       switch(align.index){
@@ -121,7 +128,7 @@ extension Bayangan on Text{
         case 4: // bottom right
         arah = Offset( blur, blur);
         break;
-        case 5: // botttom center
+        case 5: // bottom center
         arah = Offset( 0, blur);
         break;
         case 6: // bottom_left
@@ -135,6 +142,7 @@ extension Bayangan on Text{
         break;
       }
     }
+    /// returns the text with shadow with all the properties given
     return Text(this.data,
       style: TextStyle(
         color: textColor??Colors.black,
@@ -145,7 +153,7 @@ extension Bayangan on Text{
             blurRadius: blur,
             color: shadowColor??Colors.grey,
           ),
-          
+
         ]
       ),
     );
